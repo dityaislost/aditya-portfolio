@@ -61,7 +61,7 @@ const ResumeChatbot: React.FC = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
- const resumeContext = `
+  const resumeContext = `
 You are an AI career assistant representing Aditya Bhardwaj. Your role is to answer questions about Aditya's professional background, technical expertise, education, projects, and career interests based strictly on the information provided below.
 
 Always respond professionally, clearly, and concisely as if you are speaking on behalf of Aditya.
@@ -295,7 +295,7 @@ GUIDELINES FOR RESPONSES
       }
 
       const botResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "I received an empty response. Please try rephrasing.";
-      
+
       setMessages((prev: Message[]) => [...prev, { role: 'bot', text: botResponse }]);
     } catch (error: any) {
       console.error('Chatbot Error:', error);
@@ -318,8 +318,8 @@ GUIDELINES FOR RESPONSES
               Hey There!! Need help?
             </div>
           )}
-          <button 
-            className={`chatbot-toggle ${showGreeting ? 'waving' : ''}`} 
+          <button
+            className={`chatbot-toggle ${showGreeting ? 'waving' : ''}`}
             onClick={() => setIsOpen(true)}
           >
             {showGreeting ? "👋" : <FaComment />}
@@ -335,7 +335,7 @@ GUIDELINES FOR RESPONSES
               <FaTimes />
             </button>
           </div>
-          
+
           <div className="chatbot-messages">
             {messages.map((msg: Message, idx: number) => (
               <div key={idx} className={`message ${msg.role}`}>
@@ -354,8 +354,8 @@ GUIDELINES FOR RESPONSES
 
           <div className="chatbot-faqs">
             {faqs.map((faq, idx) => (
-              <button 
-                key={idx} 
+              <button
+                key={idx}
                 className="faq-chip"
                 onClick={() => {
                   setInput(faq);
