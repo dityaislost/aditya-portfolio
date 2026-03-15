@@ -106,7 +106,7 @@ Your feedback is valuable and helps make this project better for everyone. Thank
 ## 📧 Contact Me
 
 - 📧 Email: [bhardwajaditya0203@gmail.com](mailto:bhardwajaditya0203@gmail.com)
-- 🔗 [LinkedIn](https://www.linkedin.com/in/adityabhardwaj-9572a3260)
+- 🔗 [LinkedIn][(https://www.linkedin.com/in/adityabhardwaj-9572a3260)](https://www.linkedin.com/in/aditya-bhardwaj-9572a3260/)
 
 ---
 
