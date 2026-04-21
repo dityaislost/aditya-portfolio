@@ -11,7 +11,7 @@ const timeline: TimelineItem[] = [
       'Building REST APIs, optimizing queries, and improving code quality using industry standards.',
       'Participating in testing, debugging, and deployment activities in an agile environment.',
     ],
-    dateRange: 'Nov 2025 – Present',
+    dateRange: 'Nov 2025 – Apr 2026',
   },
   {
     timelineType: 'education',

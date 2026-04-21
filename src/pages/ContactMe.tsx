@@ -10,6 +10,7 @@ import { getContactMe } from '../queries/getContactMe';
 const ContactMe: React.FC = () => {
 
   const [userData, setUserData] = useState<IContactMe>()
+  const [leetCodeStats, setLeetCodeStats] = useState<any>(null);
   const location = useLocation();
   const backgroundGif = location.state?.backgroundGif;
 
@@ -19,7 +20,18 @@ const ContactMe: React.FC = () => {
       setUserData(data);
     }
 
+    async function fetchLeetCodeStats() {
+      try {
+        const response = await fetch(`https://alfa-leetcode-api.onrender.com/bhardwajaditya0203/profile?t=${new Date().getTime()}`, { cache: 'no-store' });
+        const data = await response.json();
+        setLeetCodeStats(data);
+      } catch (error) {
+        console.error('Failed to fetch LeetCode stats:', error);
+      }
+    }
+
     fetchUserData();
+    fetchLeetCodeStats();
   }, []);
 
   if (!userData) return <div>Loading...</div>;
@@ -48,31 +60,35 @@ const ContactMe: React.FC = () => {
             </div>
             <div className="stat-card-body">
               <div className="stat-big-number">
-                <span className="big-num">540</span>
+                <span className="big-num">{leetCodeStats ? leetCodeStats.totalSolved : "..."}</span>
                 <span className="big-label">Problems Solved</span>
               </div>
               <div className="stat-breakdown">
                 <div className="stat-pill easy">
-                  <span className="pill-count">247</span>
+                  <span className="pill-count">{leetCodeStats ? leetCodeStats.easySolved : "..."}</span>
                   <span className="pill-label">Easy</span>
                 </div>
                 <div className="stat-pill medium">
-                  <span className="pill-count">259</span>
+                  <span className="pill-count">{leetCodeStats ? leetCodeStats.mediumSolved : "..."}</span>
                   <span className="pill-label">Medium</span>
                 </div>
                 <div className="stat-pill hard">
-                  <span className="pill-count">34</span>
+                  <span className="pill-count">{leetCodeStats ? leetCodeStats.hardSolved : "..."}</span>
                   <span className="pill-label">Hard</span>
                 </div>
               </div>
               <div className="stat-extras">
                 <div className="stat-extra-item">
                   <FaTrophy className="extra-icon" />
-                  <span>Rank #158,662</span>
+                  <span>Rank #{leetCodeStats?.ranking ? leetCodeStats.ranking.toLocaleString() : "..."}</span>
                 </div>
                 <div className="stat-extra-item">
                   <FaCheckCircle className="extra-icon" />
-                  <span>69% Acceptance</span>
+                  <span>
+                    {leetCodeStats?.matchedUserStats 
+                      ? `${((leetCodeStats.matchedUserStats.acSubmissionNum[0].submissions / leetCodeStats.matchedUserStats.totalSubmissionNum[0].submissions) * 100).toFixed(1)}%` 
+                      : "..."} Acceptance
+                  </span>
                 </div>
               </div>
             </div>
